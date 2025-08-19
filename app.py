@@ -30,3 +30,5 @@ if uploaded_file is not None:
     else:
         st.success("This is a **Dog  M-6**")
 
+st.title("OpenCV Image Classifier")
+st.write("Hello! Deployment test working ✅")
