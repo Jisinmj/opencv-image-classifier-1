@@ -1,1 +1,0 @@
-# opencv-image-classifier-1
