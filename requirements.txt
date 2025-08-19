@@ -1,9 +1,12 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 opencv-python
 numpy
 scikit-learn
 joblib
 =======
+=======
+>>>>>>> f073e1c83249dd556cb14e2a8d11b19e50f2607b
 altair==5.5.0
 attrs==25.3.0
 blinker==1.9.0
@@ -47,7 +50,15 @@ typing_extensions==4.14.1
 tzdata==2025.2
 urllib3==2.5.0
 watchdog==6.0.0
+<<<<<<< HEAD
 >>>>>>> f073e1c (final working version)
 streamlit
 opencv-python
 numpy
+=======
+>>>>>>> f073e1c83249dd556cb14e2a8d11b19e50f2607b
+<<<<<<< HEAD
+ninte local changes
+=======
+remote (GitHub) changes
+>>>>>>> commit_id
