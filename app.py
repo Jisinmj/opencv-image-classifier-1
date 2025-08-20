@@ -1,34 +1,26 @@
-GNU nano 8.5                               app.py
 import streamlit as st
-import pickle
 import cv2
+import pickle
 import numpy as np
+from PIL import Image
 
-# Load trained model
+# load model
 model = pickle.load(open("image_classifier.pkl", "rb"))
 
-st.title(" M-6 M-1 Cat vs Dog Classifier")
+st.title("OpenCV Image Classifier")
 
-# File uploader
-uploaded_file = st.file_uploader("Upload an image", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload an image", type=["jpg", "png", "jpeg"])
 
 if uploaded_file is not None:
-    # Convert file to image
-    file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
-    img = cv2.imdecode(file_bytes, 1)
-    st.image(img, channels="BGR", caption="Uploaded Image")
+    image = Image.open(uploaded_file)
+    st.image(image, caption="Uploaded Image", use_column_width=True)
 
-    # Preprocess image like in train.py
-    img = cv2.resize(img, (100, 100))   # same size used in training
-    img = img.flatten().reshape(1, -1)
+    # preprocessing
+    img_array = np.array(image)
+    img_array = cv2.resize(img_array, (64,64)).flatten().reshape(1,-1)
 
-    # Predict
-    prediction = model.predict(img)
+    # prediction
+    pred = model.predict(img_array)
+    st.subheader("Prediction")
+    st.write(f"Predicted class: **{pred[0]}**")
 
-    if prediction[0] == 0:
-        st.success("This is a **Cat  M-1**")
-    else:
-        st.success("This is a **Dog  M-6**")
-
-st.title("OpenCV Image Classifier")
-st.write("Hello! Deployment test working ✅")
